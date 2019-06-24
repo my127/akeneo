@@ -1,0 +1,22 @@
+version: '3'
+services:
+
+  # Base Images
+
+  php72-fpm-stretch-base:
+    image: my127/akeneo:7.2-fpm-stretch
+    build:
+      context: ./
+      dockerfile: base.Dockerfile
+      args:
+        VERSION: 7.2
+
+  # Console Images
+
+  php72-fpm-stretch-console:
+    image: my127/akeneo:7.2-fpm-stretch-console
+    build:
+      context: ./
+      dockerfile: console.Dockerfile
+      args:
+        VERSION: 7.2

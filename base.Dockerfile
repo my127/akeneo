@@ -5,6 +5,7 @@ FROM my127/php:${VERSION}-fpm-stretch
 # --------------------------
 RUN cd /root/installer; ./enable.sh \
   apcu \
+  exif \
   mbstring \
   curl \
   gd \

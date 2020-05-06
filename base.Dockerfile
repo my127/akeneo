@@ -1,5 +1,12 @@
 ARG VERSION=7.3
-FROM my127/php:${VERSION}-fpm-stretch
+ARG BASEOS=stretch
+FROM my127/php:${VERSION}-fpm-${BASEOS}
+
+RUN apt-get update \
+ && apt-get install -y \
+  aspell \
+  ghostscript \
+ && rm -rf /var/lib/apt/lists/*
 
 # PHP: additional extensions
 # --------------------------

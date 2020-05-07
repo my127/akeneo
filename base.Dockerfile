@@ -5,6 +5,10 @@ FROM my127/php:${VERSION}-fpm-${BASEOS}
 RUN apt-get update \
  && apt-get install -y \
   aspell \
+  aspell-en \
+  aspell-es \
+  aspell-fr \
+  aspell-de \
   ghostscript \
  && rm -rf /var/lib/apt/lists/*
 

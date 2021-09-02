@@ -21,6 +21,15 @@ services:
         VERSION: 7.3
         BASEOS: buster
 
+  php74-fpm-buster-base:
+    image: my127/akeneo:7.4-fpm-buster
+    build:
+      context: ./
+      dockerfile: base.Dockerfile
+      args:
+        VERSION: 7.4
+        BASEOS: buster
+
   # Console Images
 
   php72-fpm-stretch-console:
@@ -39,4 +48,13 @@ services:
       dockerfile: console.Dockerfile
       args:
         VERSION: 7.3
+        BASEOS: buster
+
+  php74-fpm-buster-console:
+    image: my127/akeneo:7.4-fpm-buster-console
+    build:
+      context: ./
+      dockerfile: console.Dockerfile
+      args:
+        VERSION: 7.4
         BASEOS: buster

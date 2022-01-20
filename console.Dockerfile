@@ -24,7 +24,7 @@ RUN if [ "$VERSION" != "7.2" ]; then \
     gnupg2 \
   && [ "$(uname -m)" = aarch64 ] || ( \
   echo "deb https://repo.mysql.com/apt/debian/ buster mysql-8.0" > /etc/apt/sources.list.d/mysql.list \
-  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4A9406876FCBD3C456770C88C718D3B5072E1F5 \
+  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 859BE8D7C586F538430B19C2467B942D3A79BD29 \
   && apt-get update \
   && apt-get install -y \
     mysql-community-client \

@@ -39,6 +39,15 @@ services:
         VERSION: 7.4
         BASEOS: bullseye
 
+  php80-fpm-bullseye-base:
+    image: my127/akeneo:8.0-fpm-bullseye${TAG_SUFFIX:-}
+    build:
+      context: ./
+      dockerfile: base.Dockerfile
+      args:
+        VERSION: "8.0"
+        BASEOS: bullseye
+
   php81-fpm-bullseye-base:
     image: my127/akeneo:8.1-fpm-bullseye${TAG_SUFFIX:-}
     build:
@@ -84,6 +93,15 @@ services:
       dockerfile: console.Dockerfile
       args:
         VERSION: 7.4
+        BASEOS: bullseye
+
+  php80-fpm-bullseye-console:
+    image: my127/akeneo:8.0-fpm-bullseye-console${TAG_SUFFIX:-}
+    build:
+      context: ./
+      dockerfile: console.Dockerfile
+      args:
+        VERSION: "8.0"
         BASEOS: bullseye
 
   php81-fpm-bullseye-console:

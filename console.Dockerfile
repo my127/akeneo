@@ -3,6 +3,7 @@ ARG BASEOS=stretch
 FROM my127/php:${VERSION}-fpm-${BASEOS}-console
 
 ARG VERSION=7.3
+ARG BASEOS=stretch
 
 RUN apt-get update \
  && apt-get install -y \
@@ -22,8 +23,8 @@ RUN if [ "$VERSION" != "7.2" ]; then \
     apt-transport-https \
     dirmngr \
     gnupg2 \
-  && [ "$(uname -m)" = aarch64 ] || ( \
-  echo "deb https://repo.mysql.com/apt/debian/ buster mysql-8.0" > /etc/apt/sources.list.d/mysql.list \
+  && [ "$(uname -m)" = aarch64 ] || [ "$BASEOS" = 'bullseye' ] || ( \
+  echo "deb https://repo.mysql.com/apt/debian/ $BASEOS mysql-8.0" > /etc/apt/sources.list.d/mysql.list \
   && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 859BE8D7C586F538430B19C2467B942D3A79BD29 \
   && apt-get update \
   && apt-get install -y \

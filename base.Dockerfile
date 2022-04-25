@@ -10,6 +10,7 @@ RUN apt-get update \
   aspell-fr \
   aspell-de \
   ghostscript \
+ && apt clean \
  && rm -rf /var/lib/apt/lists/*
 
 # PHP: additional extensions

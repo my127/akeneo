@@ -15,8 +15,7 @@ RUN apt-get update \
   ghostscript \
   # MySQL 8 client \
   if [ "$VERSION" != "7.2" ] && [ "$(uname -m)" != aarch64 ] && [ "$BASEOS" != 'bullseye' ]; then \
-    apt-get update \
-    && apt-get install -y --no-install-recommends \
+    apt-get install -y --no-install-recommends \
       apt-transport-https \
       dirmngr \
       gnupg2 \

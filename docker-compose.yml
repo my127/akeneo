@@ -39,15 +39,6 @@ services:
         VERSION: 7.4
         BASEOS: bullseye
 
-  php80-fpm-buster-base:
-    image: my127/akeneo:8.0-fpm-buster${TAG_SUFFIX:-}
-    build:
-      context: ./
-      dockerfile: base.Dockerfile
-      args:
-        VERSION: "8.0"
-        BASEOS: buster
-
   php81-fpm-bullseye-base:
     image: my127/akeneo:8.1-fpm-bullseye${TAG_SUFFIX:-}
     build:
@@ -94,15 +85,6 @@ services:
       args:
         VERSION: 7.4
         BASEOS: bullseye
-
-  php80-fpm-buster-console:
-    image: my127/akeneo:8.0-fpm-buster-console${TAG_SUFFIX:-}
-    build:
-      context: ./
-      dockerfile: console.Dockerfile
-      args:
-        VERSION: "8.0"
-        BASEOS: buster
 
   php81-fpm-bullseye-console:
     image: my127/akeneo:8.1-fpm-bullseye-console${TAG_SUFFIX:-}

@@ -57,6 +57,15 @@ services:
         VERSION: 8.1
         BASEOS: bullseye
 
+  php82-fpm-bullseye-base:
+    image: my127/akeneo:8.2-fpm-bullseye${TAG_SUFFIX:-}
+    build:
+      context: ./
+      dockerfile: base.Dockerfile
+      args:
+        VERSION: 8.2
+        BASEOS: bullseye
+
   # Console Images
 
   php72-fpm-stretch-console:
@@ -111,4 +120,13 @@ services:
       dockerfile: console.Dockerfile
       args:
         VERSION: 8.1
+        BASEOS: bullseye
+
+  php82-fpm-bullseye-console:
+    image: my127/akeneo:8.2-fpm-bullseye-console${TAG_SUFFIX:-}
+    build:
+      context: ./
+      dockerfile: console.Dockerfile
+      args:
+        VERSION: 8.2
         BASEOS: bullseye

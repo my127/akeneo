@@ -60,7 +60,7 @@ pipeline {
                 DOCKER_REGISTRY_CREDS = credentials('docker-registry-credentials')
             }
             when {
-                branch 'main'
+                branch 'feature/force-single-php73-stretch'
             }
             steps {
                 sh './manifest-push.sh'

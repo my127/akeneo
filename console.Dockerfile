@@ -1,9 +1,9 @@
-ARG VERSION=7.3
-ARG BASEOS=stretch
+ARG VERSION=8.2
+ARG BASEOS=bullseye
 FROM my127/php:${VERSION}-fpm-${BASEOS}-console
 
-ARG VERSION=7.3
-ARG BASEOS=stretch
+ARG VERSION=8.2
+ARG BASEOS=bullseye
 
 RUN apt-get update \
  && apt-get install -y \
@@ -17,7 +17,7 @@ RUN apt-get update \
 
 # MySQL 8 client
 # --------------
-RUN if [ "$VERSION" != "7.2" ]; then \
+RUN if [ "$BASEOS" != stretch ]; then \
   apt-get update \
   && apt-get install -y --no-install-recommends \
     apt-transport-https \

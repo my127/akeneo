@@ -1,5 +1,5 @@
-ARG VERSION=7.3
-ARG BASEOS=stretch
+ARG VERSION=8.2
+ARG BASEOS=bullseye
 FROM my127/php:${VERSION}-fpm-${BASEOS}
 
 RUN apt-get update \

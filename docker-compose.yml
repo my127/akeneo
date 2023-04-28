@@ -12,6 +12,15 @@ services:
         VERSION: 7.2
         BASEOS: stretch
 
+  php73-fpm-stretch-base:
+    image: my127/akeneo:7.3-fpm-stretch${TAG_SUFFIX:-}
+    build:
+      context: ./
+      dockerfile: base.Dockerfile
+      args:
+        VERSION: 7.3
+        BASEOS: stretch
+
   php73-fpm-buster-base:
     image: my127/akeneo:7.3-fpm-buster${TAG_SUFFIX:-}
     build:
@@ -75,6 +84,15 @@ services:
       dockerfile: console.Dockerfile
       args:
         VERSION: 7.2
+        BASEOS: stretch
+
+  php73-fpm-stretch-console:
+    image: my127/akeneo:7.3-fpm-stretch-console${TAG_SUFFIX:-}
+    build:
+      context: ./
+      dockerfile: console.Dockerfile
+      args:
+        VERSION: 7.3
         BASEOS: stretch
 
   php73-fpm-buster-console:

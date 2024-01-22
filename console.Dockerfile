@@ -32,7 +32,7 @@ RUN <<EOF
 
     GNUPGHOME="$(mktemp -d)"
     echo "disable-ipv6" >> "$GNUPGHOME/dirmngr.conf"
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 859BE8D7C586F538430B19C2467B942D3A79BD29
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BCA43417C3B485DD128EC6D4B7B3B788A8D3785C
     rm -rf "$GNUPGHOME"
 
     apt-get update

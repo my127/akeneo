@@ -3,8 +3,8 @@ ARG VERSION
 ARG BASEOS
 FROM my127/php:${VERSION}-fpm-${BASEOS}-console
 
-ARG VERSION=7.3
-ARG BASEOS=stretch
+ARG VERSION
+ARG BASEOS
 
 RUN apt-get update \
  && apt-get install -y \

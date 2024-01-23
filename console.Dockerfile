@@ -1,5 +1,6 @@
-ARG VERSION=7.3
-ARG BASEOS=stretch
+# syntax=docker/dockerfile:1.4
+ARG VERSION
+ARG BASEOS
 FROM my127/php:${VERSION}-fpm-${BASEOS}-console
 
 ARG VERSION=7.3
@@ -17,21 +18,29 @@ RUN apt-get update \
 
 # MySQL 8 client
 # --------------
-RUN if [ "$VERSION" != "7.2" ]; then \
-  apt-get update \
-  && apt-get install -y --no-install-recommends \
-    apt-transport-https \
-    dirmngr \
-    gnupg2 \
-  && [ "$(uname -m)" = aarch64 ] || [ "$BASEOS" = 'bullseye' ] || ( \
-  echo "deb https://repo.mysql.com/apt/debian/ $BASEOS mysql-8.0" > /etc/apt/sources.list.d/mysql.list \
-  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 859BE8D7C586F538430B19C2467B942D3A79BD29 \
-  && apt-get update \
-  && apt-get install -y \
-    mysql-community-client \
-  ) \
-  && rm -rf /var/lib/apt/lists/*; \
-fi
+RUN <<EOF
+  set -o errexit
+  set -o nounset
+  if [ "$(uname -m)" != aarch64 ] && [ "$BASEOS" = buster ]; then
+    apt-get update
+    apt-get install -y --no-install-recommends \
+      apt-transport-https \
+      dirmngr \
+      gnupg2
+
+    echo "deb https://repo.mysql.com/apt/debian/ $BASEOS mysql-8.0" > /etc/apt/sources.list.d/mysql.list
+
+    GNUPGHOME="$(mktemp -d)"
+    echo "disable-ipv6" >> "$GNUPGHOME/dirmngr.conf"
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BCA43417C3B485DD128EC6D4B7B3B788A8D3785C
+    rm -rf "$GNUPGHOME"
+
+    apt-get update
+    apt-get install -y \
+      mysql-community-client
+    rm -rf /var/lib/apt/lists/*;
+  fi
+EOF
 
 # PHP: additional extensions
 # --------------------------
